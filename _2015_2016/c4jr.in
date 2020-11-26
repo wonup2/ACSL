@@ -1,0 +1,18 @@
+#, aac, acc, abc, ac, abbc, abbbc, abbbbc, aabc, accb
+a.c
+a[ab]c
+a[^ab]c
+ab*c
+ab{2,4}c
+#, a, aa, aaa, ab, abb, aabb, aaab, abbb, b
+a?b
+a*b
+a+b
+a*b+
+a?b+
+#, x, y, z, xy, xyz, xxyz, xyyz, yzz, xxxyzz
+xy?
+y+z
+x?y*z
+x?x?
+x+yz?

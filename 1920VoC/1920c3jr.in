@@ -1,0 +1,84 @@
+56
+85
+5F
+D9
+CD
+AB
+AC
+AF
+FF
+9A
+
+
+~BC + ABC + ~AB~C
+AB~C + A~BC + ~A~B~C
+~B + ABC + ~AB~C
+~C+ABC
+A+~A~B~C
+
+~A~B + A~C + ~ABC
+A~B + AB~C + ~ABC
+~B + AB~C + ~ABC
+B + ~B
+A~C + ~AB~C + ~A~BC
+
+
+13
+14
+15
+16
+17
+AB
+AC
+AF
+FF
+9A
+
+~A~B + ~AB~C
+~AB~C + A~BC
+~A~C + A~BC
+~BC + ~AB~C
+~BC + ~A~C
+~A~B + A~C + ~ABC
+A~B + AB~C + ~ABC
+~B + AB~C + ~ABC
+B + ~B
+A~C + ~AB~C + ~A~BC
+
+
+
+F0
+1D
+9D
+E9
+E7
+
+B
+A~B + ~A~C
+~C + A~BC
+AB + ~B~C + ~ABC
+C + AB~C + ~A~B~C
+
+
+
+33
+3C
+94
+77
+95
+F0
+1D
+9D
+E9
+E7
+
+~A
+~AB + A~B
+B~C + A~BC
+C + ~A~C
+~A~C + AB~C + A~BC
+B
+A~B + ~A~C
+~C + A~BC
+AB + ~B~C + ~ABC
+C + AB~C + ~A~B~C
