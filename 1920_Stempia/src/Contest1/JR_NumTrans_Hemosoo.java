@@ -33,25 +33,27 @@ public class JR_NumTrans_Hemosoo {
 		D = in.nextInt();
 	}
 	public static void solve() {
+		
 		hold = N.length() - P;
-		if(Character.getNumericValue(N.charAt(hold)) >= 0 && Character.getNumericValue(N.charAt(hold)) <= 4) {
-			D += Character.getNumericValue(N.charAt(hold));
-		}
-		else if(Character.getNumericValue(N.charAt(hold)) >= 5 && Character.getNumericValue(N.charAt(hold)) <= 9) {
-			D =  Math.abs(Character.getNumericValue(N.charAt(hold))-D);
-		}
-		D = D%10;
+		
+		int number = N.charAt(hold)-'0';
+		
+		if(number >= 0 && number <= 4) D += number;
+				
+		else if(number >= 5 && number <= 9) D =  Math.abs(number-D);
+		
+		D %= 10;
+		
 		for(int i = 0; i < N.length(); i++) {
-			if(i == hold) {
-				result += D + "";
-			}
-			else if(i > hold) {
-				result += "0";
-			}
-			else {
-				result += N.charAt(i);
-			}
+			
+			if(i == hold) result += D + "";
+			
+			else if(i > hold) result += "0";
+			
+			else result += N.charAt(i);		
+			
 		}
+		
 		System.out.println(result);
 	}
 }

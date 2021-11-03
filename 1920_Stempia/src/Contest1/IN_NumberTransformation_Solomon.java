@@ -13,8 +13,7 @@ public class IN_NumberTransformation_Solomon {
 	
 	static Scanner in;
 	static String n;
-	static int p;
-	static StringBuilder ans;
+	static int p, ans;
 	
 	public static void main(String[] args)throws IOException {
 		
@@ -36,18 +35,31 @@ public class IN_NumberTransformation_Solomon {
 	static void init() {
 		n = in.next();
 		p = in.nextInt();
-		ans = new StringBuilder();
+		ans = 0;
 	}
 	
 	static void solve() {
+		
+		int num1 = n.charAt(n.length() - p) - '0';
+		int num2 = 0;
+		
 		for(int x = 0; x < n.length() - p; x++) {
-			ans.append(((n.charAt(n.length() - p) - '0') + (n.charAt(x) - '0'))%10);
+			
+			num2 = n.charAt(x) - '0';
+			ans = (num1 + num2) % 10;
+			System.out.print(ans);
 		}
-		ans.append(n.charAt(n.length() - p));
+		
+		System.out.print(num1);
+		
 		for(int x = n.length() - p + 1; x < n.length(); x++) {
-			ans.append(Math.abs(n.charAt(n.length() - p) - n.charAt(x)));
-		}
-		System.out.println(ans);
+			
+			num2 = n.charAt(x) - '0';
+			ans = Math.abs(num1 - num2);
+			System.out.print(ans);			
+		}		
+		
+		System.out.println();
 	}
 
 }

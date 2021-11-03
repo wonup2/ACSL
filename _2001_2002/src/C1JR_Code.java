@@ -8,9 +8,9 @@ public class C1JR_Code {
 	
 	public static void main(String[] args) throws IOException  {
 		
-		in = new Scanner(new File("c1jr.in"));
+		in = new Scanner(System.in);
 		
-		for(int i=0; i<10; i++) {
+		for(int i=0; i<5; i++) {
 			try {
 				init();
 				solve();
@@ -49,10 +49,18 @@ public class C1JR_Code {
 	
 	private static int gcf(int n) {
 		
-		for(int i = n/2; i>=2; i--) {
+		for(int i = n/2; i>=1; i--) {
 			if(n % i == 0) return i;
 		}		
 		return 1;
 	}
 }
-	
+
+/*
+B
+A
+C
+F
+G
+
+*/

@@ -9,16 +9,24 @@ public class C1In {
 	public static void main(String[] args) throws IOException {
 
 		in = new Scanner(new File("C1in.in"));
-		for(int i = 0; i<5; i++) {
-			init();
-			solve();
+		
+		for(int i=0; i<5; i++) {
+			try {			
+				init();
+				solve();
+			
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
-		in.close();
+		in.close();			
 	}
+	
 	static void init() {
 		N = in.next();
 		P = in.nextInt();
 	}
+	
 	static void solve() {
 				
 		BigInteger sum = new BigInteger("0");

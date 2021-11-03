@@ -11,157 +11,100 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 class Solve {
-
-    /*
-     * Complete the 'syllables' function below.
-     *
-     * The function is expected to return an INTEGER.
-     * The function accepts STRING word as parameter.
-     */
 	
 	public static String[] prefix = {"co","de","dis","pre","re","un"};
 	public static String[] suffix = {"age","ful","ing","less","ment"};
 	public static String[] twocons = {"ch","ck","ph","sh","th","wh","wr"};
 	
     public static int syllables(String word) {
-    	String result1 = "";
-    	String result2 = "";
-    	for(String s:prefix)
-    	{
-    		if(word.length()>=s.length())
-    		{
-    			if(word.substring(0,s.length()).equals(s))
-    			{
-    				result1=s+"|";
-    				word = word.substring(s.length());
-    				break;
-    			}
+    	
+    	String pre = "";
+    	String suf = "";
+    	for(String s:prefix) 	{
+    		if(word.startsWith(s)) {	
+    			pre=s+"|";
+    			word = word.substring(s.length());    
+    			break;
+    		}
+    	}    	
+    	//System.out.println(pre +" "+word);  //prelanguage
+    	
+    	for(String s:suffix){
+    		if(word.endsWith(s)) {
+    			suf="|"+s;
+    			word = word.substring(0,word.length()-s.length());
+    			break;
+    		}
+    	}    	
+
+    	//System.out.println(pre +" "+word +" "+suf);  //prelanguage
+    	
+    	ArrayList<Integer> v = new ArrayList<Integer>();
+    	for(int i=0; i<word.length(); i++) {
+    		if(isVowel(word.charAt(i))) v.add(i);
+    	}
+    	
+    	//System.out.println(v);
+    	
+    	String center = word.substring(0, v.get(0));
+    	
+    	for(int i=0; i<v.size()-1; i++) {
+    		int a = v.get(i);
+    		int b = v.get(i+1);
+    		String t = word.substring(a+1,b);
+    		center += word.charAt(a);
+    		
+    		if(t.length()==1) center += "|" + t;
+    		else if(t.length()==2) {
+    			if(startCons(t)) center += "|" + t;
+    			else center += t.charAt(0) + "|" + t.charAt(1);
+    		}
+    		else if(t.length()==3) {
+    			if(startCons(t)) center += t.substring(0,2) + "|" + t.charAt(2);
+    			if(endCons(t)) center += t.charAt(0) + "|" + t.substring(1,3);
+    		}
+    		else if(t.length()==4) {
+    			center += t.substring(0,2) + "|" + t.substring(2,4);
     		}
     	}
-    	for(String s:suffix)
-    	{
-    		if(word.length()>=s.length())
-    		{
-    			if(word.substring(word.length()-s.length()).equals(s))
-    			{
-    				result2="|"+s;
-    				word = word.substring(0,word.length()-s.length());
-    				break;
-    			}
-    		}
-    	}
-    	//System.out.println(word);
-    	for(int i = 0;i<word.length();i++)
-    	{
-    		if(isVowel(word.charAt(i)))
-    		{
-    			//System.out.println(i+": "+word.charAt(i));
-    			String inbetween = "";
-    			boolean change = false;
-    			boolean vowel2 = false;
-    			for(int j=i+1;j<word.length();j++)
-    			{
-    				
-    				if(isVowel(word.charAt(j)))
-    				{
-    					//System.out.println(word.charAt(i)+ " "+inbetween+" "+word.charAt(j));
-    					vowel2 = true;
-    					if(inbetween.length()==0)
-    					{
-    						i=j-1;
-    						break;
-    					}
-    					if(consCount(inbetween)==1)
-    					{
-    						result1+=word.charAt(i)+"|"+inbetween;
-    					}
-    					else
-    					{
-    						if(inbetween.length()==2)
-    						{
-    							result1+=word.charAt(i)+""+inbetween.charAt(0)+"|"+inbetween.charAt(1);
-    						}
-    						else
-    						{
-    							if(consCount(inbetween.substring(0,2))==1)
-    							{
-    								result1+=word.charAt(i)+inbetween.substring(0,2)+"|"+inbetween.substring(2);
-    							}
-    							else
-    							{
-    								result1+=word.charAt(i)+""+inbetween.charAt(0)+"|"+inbetween.substring(1);
-    							}
-    						}
-    					}
-    					i=j-1;
-    					change = true;
-    					break;
-    				}
-    				inbetween+=word.charAt(j);
-    			}
-    			if(!vowel2)
-    			{
-					result1+=word.charAt(i)+inbetween;
-					i=word.length()-1;
-    			}
-    			else if(!change)
-    			{
-    				result1+=word.charAt(i)+inbetween;
-    			}
-    		}
-    		else
-    		{
-    			result1+=word.charAt(i);
-    		}
-    	}
-    	System.out.println(result1+result2);
-		String s = result1+result2;
+    	
+    	center += word.substring(v.get(v.size()-1));    	    	
+
+		String s = pre+center+suf;
     	int ans = 0;
-		for(int i=0;i<s.length();i++)
-		{
-			if(s.charAt(i)=='|')
-				ans+=i;
+		for(int i=0;i<s.length();i++){
+			if(s.charAt(i)=='|') ans+=i;
 		}
 		return ans;    	
     }
-    public static int consCount(String s)
-    {
-    	if(s.length()==1)
-    		return 1;
-    	for(String doub:twocons)
-    	{
-    		if(s.substring(0,2).equals(doub))
-    		{
-    			s= s.substring(2);
-    			break;
-    		}
+    
+    public static boolean startCons(String s) {
+    	for(String t:twocons) {
+    		if(s.startsWith(t)) return true;
     	}
-    	if(s.length()!=0)
-    		return 2;
-    	else
-    		return 1;
+    	return false;
     }
-    public static boolean isVowel(char c)
-    {
+    
+    public static boolean endCons(String s) {
+    	for(String t:twocons) {
+    		if(s.endsWith(t)) return true;
+    	}
+    	return false;
+    } 
+    
+    public static boolean isVowel(char c) {
     	return c=='a'||c=='e'||c=='i'||c=='o'||c=='u';
     }
-
 }
 
 public class AS1_Syllables {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        for(int i=0; i<10; i++) {
+        	String word = bufferedReader.readLine();
 
-        String word = bufferedReader.readLine();
-
-        int result = Solve.syllables(word);
-        System.out.println(result);
-        
-       /* bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
-
-        bufferedReader.close();
-        bufferedWriter.close();*/
+        	int result = Solve.syllables(word);
+        	System.out.println(result);     
+        }
     }
 }

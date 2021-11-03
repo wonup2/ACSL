@@ -20,7 +20,7 @@ class Result {
      */
 
     public static int bigwords(List<String> lines) {
-
+    	return 0;
     }
 
 }
@@ -28,7 +28,6 @@ class Result {
 public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-       // BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int N = Integer.parseInt(bufferedReader.readLine().trim());
 
@@ -41,12 +40,8 @@ public class Solution {
         })
             .collect(toList());
 
-        int result = Result.bigwords(lines);
-
-       // bufferedWriter.write(String.valueOf(result));
-      //  bufferedWriter.newLine();
-
+        int result = Result.bigwords(lines);		//<-------------
+        //String result = Result.bigwords(lines);   //<-------------
         bufferedReader.close();
-       // bufferedWriter.close();
     }
 }

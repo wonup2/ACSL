@@ -1,11 +1,5 @@
+//2019-2020 Contest 1 Junior
 package Contest1;
-/*
-Name: Minjun Kim
-Grade: 9
-Team: Stempia 
-Division: Junior 5
-Contest 1
-*/
 
 import java.util.*;
 import java.io.*;

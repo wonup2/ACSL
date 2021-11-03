@@ -6,8 +6,8 @@ public class ConvertNumber {
 		String int_bin = Integer.toString(5, 2);
 		System.out.println(int_bin);   //101		
 		
-		// integer -> hex
-		String int_oct = Integer.toString(9, 8);
+		// integer -> octal
+		String int_oct = Integer.toString(44, 8);
 		System.out.println(int_oct);   //11
 		
 		// integer -> hex
@@ -24,7 +24,7 @@ public class ConvertNumber {
 		System.out.println(hex_int); //11
 				
 		// octal -> integer
-		int oct_int = Integer.parseInt("10", 8);
+		int oct_int = Integer.parseInt("32", 8);
 		System.out.println(oct_int); //8
 		
 		

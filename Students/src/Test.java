@@ -9,31 +9,11 @@ public class Test {
 	static double total, mpg, ppg, speed;
 	public static void main(String[] args) throws FileNotFoundException
 	{
-		in = new Scanner(new File("a.txt"));
-		
-		mpg = in.nextDouble();
-		ppg = in.nextDouble();
-		speed = in.nextDouble();
-		
-		for(int i=0; i<5; i++) {
-			init();
-			solve();
-		}
-		in.close();
-	}
-		
-	static void init() {
-		String letter = "ABCDEFG";
-		start = letter.indexOf(in.next());
-		end = letter.indexOf(in.next());				
-	}
-	
-	static void solve() {
-		total = 0;
-		for(int i=start; i<end; i++) {
-			total+=d[i];
-		}
-		
-		
+		double a = 4.2;
+		double b = a*3;
+		b = (int)(b*100) / 100.0;
+		System.out.println(b);
+		if(b==9.6)
+		 System.out.println(b);
 	}
 }

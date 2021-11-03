@@ -1,7 +1,9 @@
 import java.io.*;
 import java.util.*;
 public class Patience {
-
+	public static void hello() {
+		System.out.println("Hello World");
+	}
 	public static void main(String[] args) throws IOException {
 		Scanner in = new Scanner(new File("Patience.in"));
 		for(int z=0; z<10; z++){

@@ -7,7 +7,7 @@ public class AllStar3_ACSL_Time {
     static long answer;
     public static void main(String[] args) throws IOException {
         br = new BufferedReader(new FileReader(new File("1819AllStar3.in")));
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 1; i++) {
         	try {
         		init();
         		solve();
@@ -39,8 +39,11 @@ public class AllStar3_ACSL_Time {
     			++days;
     		if(i % 5 == 0)
     			days += 2;
-    		answer += days * 90000;
+    		answer += days;
+    		
+    		//System.out.println(i+" "+answer);
     	}
+    	
     	for(int i = 1; i < month; i++) {
     		int days = 31;
     		if(i == 2)
@@ -53,9 +56,14 @@ public class AllStar3_ACSL_Time {
     			days += 2;
     		if((i == 6 || i == 11) && year % 7 == 0 && year % 5 != 0 && year % 3 != 0)
     			days += 3;
-    		answer += days * 90000;
+    		
+    		answer += days;
+        	System.out.println(answer);
+
     	}
+    	
+    	answer *= 90000;
     	answer += (day - 1) * 90000 + hour * 3600 + minute * 80 + second;
-    	System.out.println(answer - 13093200);
+    	System.out.println(answer - 13093200);  //2019/1/1/00:00:00 - 2019/5/25/12:00:00 ---> 145days + 12hr
     }
 }

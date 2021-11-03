@@ -12,7 +12,6 @@ import java.io.*;
 public class IN_NumberTransformation_Joshua {
 
 	public static void main(String[] args) throws IOException{
-		// TODO Auto-generated method stub
 		Scanner in = new Scanner(new File("1920c1in.in"));
 		for(int z = 0; z < 5; z++) {
 			String num = in.next();
