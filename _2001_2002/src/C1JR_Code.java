@@ -6,30 +6,23 @@ public class C1JR_Code {
 	static Scanner in;
 	static char c;
 	
-	public static void main(String[] args) throws IOException  {
+	public static void main(String[] args)  {
 		
 		in = new Scanner(System.in);
 		
 		for(int i=0; i<5; i++) {
-			try {
-				init();
-				solve();
-			}
-			catch(Exception e) {
-				
-				e.printStackTrace();
-				System.out.println("error");
-			}			
+			init();
+			solve();
 		}
-		
+	
 		in.close();
 	}		
 	
-	private static void init() {
+	static void init() {
 		c=in.next().charAt(0);
 	}
 		
-	private static void solve() {
+	static void solve() {
 		
 		int n = c - 64;
 		

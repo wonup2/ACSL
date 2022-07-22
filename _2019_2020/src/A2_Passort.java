@@ -3,13 +3,6 @@ import java.util.*;
 
 class Result {
 
-    /*
-     * Complete the 'passort' function below.
-     *
-     * The function is expected to return an INTEGER.
-     * The function accepts STRING line as parameter.
-     */
-
     public static char[] correct, arr;
     public static int n;
 
@@ -98,17 +91,11 @@ class Result {
 public class A2_Passort {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-
+      
         String line = bufferedReader.readLine();
 
         int result = Result.passort(line);
-        System.out.println(result);
-
-        //bufferedWriter.write(String.valueOf(result));
-        //bufferedWriter.newLine();
-
+        System.out.println(result);       
         bufferedReader.close();
-        //bufferedWriter.close();
     }
 }
