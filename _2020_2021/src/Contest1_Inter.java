@@ -1,56 +1,39 @@
-import java.math.BigInteger;
 import java.util.*;
 
 public class Contest1_Inter {
 
 	static Scanner in;
-	static int start, delta, rows, a[][];
+	static int start, delta, rows;
 	
 	public static void main(String[] args) {
 	
 		in = new Scanner(System.in);
-		init();
-		solve();
 		
-	}
-
-	static void init() {
-		start = in.nextInt();
-		delta = in.nextInt();
-		rows = in.nextInt();
-		a = new int[rows][];
-	}
-
-	static void solve() {		
-
-		for(int i=0; i<rows; i++) {
-			a[i] = new int[i+1];
-			for(int j=0; j<=i; j++) {
-				a[i][j] = start;
-				start+=delta;
-			}
-		}
+		for(int i=0; i<5; i++) solve();
 		
-		//System.out.println(Arrays.deepToString(a));
-		
-		String ans = calculate(a[rows-1]);
-		
-		System.out.println(ans);
 	}
 	
-	static String calculate(int[]a) {
-		BigInteger ans = new BigInteger("0");
-		for(int i=0; i<a.length; i++) {
-			String temp = Integer.toString(a[i], 8);
+	static void solve() {
+		
+		start = Integer.parseInt(in.next(), 8);  //oct to dec
+		delta = Integer.parseInt(in.next(), 8);	 //oct to dec
+		rows = in.nextInt();
 
-			int sum=0;
-			
-			for(int j=0; j<temp.length(); j++) 
-				sum+= temp.charAt(j)-'0';
-			
-			ans = ans.add(BigInteger.valueOf(sum));			
+		int repeat = (rows-1)*rows/2 -1;
+
+		start += (delta* repeat);
+		
+		String lastRow = "";
+		for(int i=0; i<rows; i++) {
+			start+=delta;
+			lastRow+= Integer.toOctalString(start);
 		}
 		
-		return ans.toString();
+		int ans = 0;
+		for(int i=0; i<lastRow.length(); i++) 
+			ans += lastRow.charAt(i) - '0';
+		
+		
+		System.out.println(ans);
 	}
 }

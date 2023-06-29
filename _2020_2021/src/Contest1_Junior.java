@@ -1,23 +1,20 @@
 
 public class Contest1_Junior {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+	public static void main(String[] args) {		
 		
 		System.out.println(sumOfLastRow(4326,1234, 80));		
 	}
 
 	public static int sumOfLastRow(int s, int d, int r) {
 		
-		 int firstNum = digitsSum(s);	 
-		 
+		 int firstNum = digitsSum(s);	 		 
 
 		 int finalRowLastNum = firstNum;
 		 
-		 for (int i=0;i<r-2;i++) {
+		 for (int i=0;i<r-2;i++) 
 			 finalRowLastNum = rowLastNum(finalRowLastNum, d, i+2);
-		 }
+		 
 		 
 		 int passedNum = finalRowLastNum;
 		 int lastRowSum = 0;

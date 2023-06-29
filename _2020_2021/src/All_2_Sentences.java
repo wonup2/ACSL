@@ -64,7 +64,7 @@ public class All_2_Sentences {
 
 		reset();
 		
-		System.out.println(parts);
+		//System.out.println(parts);
 	}
 	
 	static void solve() {

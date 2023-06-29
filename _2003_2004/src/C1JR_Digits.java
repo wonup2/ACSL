@@ -8,26 +8,17 @@ public class C1JR_Digits {
 	
 	public static void main(String[] args) throws IOException {
 	
-		in = new Scanner(new File("C1JR.in"));
-		for(int i = 0; i<10; i++) {
-			try {
-				init();
-				System.out.print(i+1+ ": ");
-				solve();
-			}catch(Exception e) {
-				e.printStackTrace();
-				System.out.println("error");				
-			}
-		}
+		in = new Scanner(System.in);
+		init();
+		solve();
 	}
 	
 	static void init() {
 		String s[] = in.nextLine().split("");  //132 
-	//	System.out.println(Arrays.toString(s));
 		a=new int [s.length];
-		for(int i = 0; i<s.length; i++) {
+		for(int i = 0; i<s.length; i++) 
 			a[i] = Integer.parseInt(s[i]); //(1,3,2)
-	}
+	
 	}
 	static void solve() {
 		//fine max, find maxIndex

@@ -30,12 +30,13 @@ public class Contest2_Inter {
 			}			
 		}
 		a.add(new pair(k, key));
+		
 	}
 	
 	public static String rearrangeString(String s, int n) {
 		
-		makeString(s);
-		Collections.sort(a);
+		makeString(s); 			System.out.println(1+" "+a);
+		Collections.sort(a);	System.out.println(2+" "+a);
 		
 		while(true) {
 			boolean flag = true;			
@@ -45,8 +46,8 @@ public class Contest2_Inter {
 				char y = p.c;				
 				for(int i=0; i<x; i++)	s+=y;
 			}
-			
-			makeString(s);
+			System.out.println(s);
+			makeString(s); System.out.println(3+" "+a);
 			
 			for(pair p:a) if(p.n>n) flag=false;			
 						
