@@ -21,28 +21,31 @@ class Result {
      * The function accepts STRING_ARRAY lines as parameter.
      */
 
-    public static int bigwords(List<String> lines) {
-    	return 0;
+    public static String findTime(char c1, char c2, char c3, char c4, char c5) {
+    	
+    	String ans = "";
+    	
+    	return ans;
     }
 
 }
 
 public class Solution {
     public static void main(String[] args) throws IOException {
+    	
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-        int N = Integer.parseInt(bufferedReader.readLine().trim());
+        String[] temp = bufferedReader.readLine().split(" ");
 
-        List<String> lines = IntStream.range(0, N).mapToObj(i -> {
-            try {
-                return bufferedReader.readLine();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        })
-            .collect(toList());
+        char c1 = temp[0].charAt(0);  	// "R" --> 'R'
+        char c2 = temp[1].charAt(0); 	// "W" --> 'W'
+        char c3 = temp[2].charAt(0); 	// "G" --> 'G'
+        char c4 = temp[3].charAt(0); 	// "B" --> 'B'
+        char c5 = temp[4].charAt(0); 	// "G" --> 'G'
 
-        int result = Result.bigwords(lines);
+        String result = Result.findTime(c1, c2, c3, c4, c5);
+        
+        System.out.println(result);
         
         bufferedReader.close();
     }

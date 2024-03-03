@@ -1,85 +1,52 @@
+import java.util.*;
 
 public class C2IN_ {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scanner in = new Scanner (System.in);
+		findLastBinary(in.nextLine());
 	}
 	
-	public static int findLastBinary(String s) 
+	public static void findLastBinary(String s) 
     {
     	// Convert each character in the string to its binary equivalent
-        StringBuilder binaryStringBuilder = new StringBuilder();
+		//s = s.replace(" ",""); System.out.println(s);
+        StringBuilder sb = new StringBuilder();
         
         byte[] asciiBytes = s.getBytes(); // get the ASCII representation of the string as a byte array
-        
+        System.out.println(Arrays.toString(asciiBytes));
         for (byte b : asciiBytes) 
         {
-            String binaryString = Integer.toBinaryString(b); // convert each byte to its binary representation
-            binaryStringBuilder.append(binaryString); // append the binary string to the StringBuilder
+            String binaryString = Integer.toBinaryString(b); // convert each byte to its binary representation            
+            for(int i=0;i<=8-binaryString.length(); i++) binaryString = "0"+binaryString;
+            sb.append(binaryString); // append the binary string to the StringBuilder
         }
         		        
-        boolean ifBothFound = true;
-        boolean frontFound = false;
-        boolean backFound = false;
+        System.out.println(sb);
         
-        int binaryNum = 0; // Binary number to convert and find
+        int front = 0;
+        int back = 0;
         
-        while(ifBothFound)
-        {
-        	String binaryStr = Integer.toString(binaryNum); // Convert binary number to string
-        	StringBuilder reversed = new StringBuilder(binaryStr).reverse(); // Reverses the string above using a stringbuilder
-        	String reversedBinaryStr = reversed.toString(); // The reversed string of the binary number
+        int num = 0; // Binary number to convert and find
+        s= sb.toString();
+        while(true){
         	
-        	
-	        int frontFoundIndex = -1; // Index where binaryStr was found
+	        String bin = Integer.toBinaryString(num);
 	        
-	        for (int i = 0; i <= binaryStringBuilder.length() - binaryStr.length(); i++) // Loop through StringBuilder
-	        { 
-	            String substring = binaryStringBuilder.substring(i, i + binaryStr.length()); // Get substring of same length as binaryStr
-	            if(binaryStr.equals(substring)) // If substring matches binaryStr
-	            { 
-	                frontFoundIndex = i; // Save index where binaryStr was found
-	                
-	                binaryStringBuilder.delete(frontFoundIndex, frontFoundIndex + binaryStr.length());
-	                
-	                frontFound = true;
-	                break; // Exit loop
-	            }
-	        }
+	        front = s.indexOf(bin);
 	        
+	        if(front==-1) break;
 	        
-	        int backFoundIndex = -1; // Index where reversedBinaryStr was found
+	        s = s.replaceFirst(bin, "");
 	        
-	        binaryStringBuilder = binaryStringBuilder.reverse();
-	        
-	        for (int i = 0; i <= binaryStringBuilder.length() - reversedBinaryStr.length(); i++)// Loop through StringBuilder
-	        { 
-	            String substring = binaryStringBuilder.substring(i, i + reversedBinaryStr.length()); // Get substring of same length as reversedBinaryStr
-	            
-	            if (reversedBinaryStr.equals(substring))
-	            {
-	            	backFoundIndex = binaryStringBuilder.length() - (reversedBinaryStr.length() + i); // Save index where binaryStr was found
-	                
-	                binaryStringBuilder.delete(backFoundIndex, backFoundIndex + reversedBinaryStr.length());
-	                
-	                backFound = true;
-	                break; // Exit loop
-	            }
-	            
-	        }
+	        back = s.lastIndexOf(bin);
 
-	        if(frontFound == false && backFound == false)
-	        {
-	        	ifBothFound = false;
-	        }
-	        else
-	        {
-	        	binaryNum++;
-	        }
+	        if(back!=-1) s = s.substring(0, back) + s.substring(back+1);
+	        
+	        num++;     
+    
         }
-        
-			return binaryNum;
-        }
-
+        System.out.println(num-1);
+    }
 }
