@@ -1,5 +1,6 @@
+package Contest4;
 
-public class Contest2_JR_Book {
+public class test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 
-public class ACSLTiles {
+public class C1_IN_ACSLTiles {
 
     static Scanner in;
     //static BufferedReader in;

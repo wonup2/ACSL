@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Contest2_IN_Book {
+public class C2_IN_Book {
 
 	static Scanner in;
 	static int n;

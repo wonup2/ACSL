@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Contest1_IN_Tiles_SB {
+public class C1_IN_Tiles_SB {
 	
 	public static void main(String[] args) {
 
