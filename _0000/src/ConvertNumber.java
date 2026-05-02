@@ -30,9 +30,7 @@ public class ConvertNumber {
 		
 		//octal -> hex ------> octal -> integer -> hex
 		String oct_hex = Integer.toString(Integer.parseInt("17", 8), 16);
-		System.out.println(oct_hex);  //f
-		
-		
+		System.out.println(oct_hex);  //f		
 		
 	}
 }
