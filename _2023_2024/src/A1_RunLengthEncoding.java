@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class F1_2324_RunLengthEncoding {
+public class A1_RunLengthEncoding {
 
 	static Scanner in;
 	static String c, s, ans="";
